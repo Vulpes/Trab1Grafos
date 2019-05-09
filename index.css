@@ -1,0 +1,23 @@
+.geral {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
+}
+.topo{
+    background-image: url('./src/teste.jpg');
+    margin: 0%;
+    padding: 0%;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.body{
+    margin: 0% 0% 0% 0%;
+    padding: 0% 0% 0% 0%;
+}
