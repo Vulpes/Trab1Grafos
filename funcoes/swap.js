@@ -3,6 +3,8 @@ const swap = (input, index_A, index_B)=> {
 
     input[index_A] = input[index_B];
     input[index_B] = temp;
+
+    return input
 }
 
 module.exports = {swap}

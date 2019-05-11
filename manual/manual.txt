@@ -1,0 +1,25 @@
+função criar grafo - são necessários 3 parâmetros, e no final retorna um json grafo
+função arestas - é necessário passar o grafo e retorna as arestas
+busca em largura - é necessário passar o no escolhido, juntamente com o grafo
+busca em profundidade - é necessário passar o vértice escolhido, juntamente com o grafo
+caminho entre dois vertices - é necessário passar o grafo, junto com a representação 2 vertices e o tipo de busca, que no caso é 1 ou 2
+caminho MFloyd - é necessário passar o grafo e ele retorna uma matriz
+cmgao - é necessário passar o grafo e o vertice escolhido
+coloracao - é necessário passar o grafo
+colorir - é necessário passar e lista e o vértice
+components - é necessário o grafo, array de vértices e o transposto(essa só foi usada internamente)
+converter matriz - converte matriz em lista, é necessário passar a matriz
+dijkstra - é necessário passar o grafo e o vertice escolhido
+heap root - é necessário passar a entrada um i com dado int e o tamanho do array
+heap sort - é necessário passar um  input, que geralmente é um vetor ou uma string
+lista - assim como a função criar grafo, é necessário quantidade de nós, o arquivo e o tipo do arquivo
+matriz - é igual ao de cima
+ordenação topologica - é necessário o grafo e o vertice escolhido, retorna uma pilha topologica
+ordenação vertices - é quase igual ao anterior
+Prim - é necessário passar o grafo, retorna o caminho mais curto
+reducao - é necessário passar o grafo, retorna o resultado da função components
+representacao - rep      - é necessário passar o grafo, a representacao e o tipo de repesentacao, retorna o grafo
+                alterRep - é necessário passar o grafo e a representacao retorna o grafo
+swap - é necessário passar uma entrada e dois index, troca os dois index, retorna a entrada
+transposto - é necessário passar o grafo, retorna o transposto
+vertice maior grau - é necessário passar o grafo, retorna o vértice de maior grau

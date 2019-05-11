@@ -1,3 +1,4 @@
+const s = require('./swap')
 const hr = (entrada,i,array_length)=>{
     var left = 2 * i + 1;
 	var right = 2 * i + 2;
@@ -12,7 +13,7 @@ const hr = (entrada,i,array_length)=>{
 	}
 
 	if (max != i) {
-	    this.swap(entrada, i, max);
+	    s.swap(entrada, i, max);
 	    this.hr(entrada, max);
 	}
 }
