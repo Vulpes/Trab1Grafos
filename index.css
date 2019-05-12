@@ -1,0 +1,49 @@
+.customFile::-webkit-file-upload-button{
+    visibility: hidden;
+}
+
+.customFile ::before{
+    content: "Selecione seu Arquivo";
+    display: inline-block;
+}
+
+input[type=file]{
+    color: transparent;
+    width: 155px;
+}
+
+.banner{
+    background-image: url('./assets/doctor-who.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 20%;
+}
+
+h1{
+    color: aliceblue;
+    text-align: center;
+}
+
+footer{
+    background-color: brown;
+    color: white;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+a:link {
+    color: chartreuse;
+}
+
+.decoration{
+    font-size: 25px;
+    text-decoration: underline overline;
+}
+
+.divb{
+    text-align: center;
+    align-content: center;
+}
