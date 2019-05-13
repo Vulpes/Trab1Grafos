@@ -35,8 +35,14 @@ footer{
     left: 0;
 }
 
-a:link {
+a:link, a:visited {
+    color: rgb(180, 175, 255);
+    cursor: pointer;
+}
+
+a:hover {
     color: chartreuse;
+    cursor: pointer;
 }
 
 .decoration{
