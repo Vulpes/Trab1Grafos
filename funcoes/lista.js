@@ -3,7 +3,7 @@ const repp = require('./representacao')
 
 const lista = (qNos, arquivo,tipo)=>{
     let l = grafo.grafo(qNos,arquivo,tipo)
-    var quantVertice = quantNos
+    var quantVertice = qNos
 		var arquivoLido = arquivo
 		if(tipo == 0){
 			var lista = [quantVertice]; //Criando a lista
