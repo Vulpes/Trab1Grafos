@@ -1,8 +1,5 @@
-
-/* Desenvolvido por Bruno dos Santos  FaceBook: https://www.facebook.com/Brunnorio */
-
 function verGrafo(tipoGrafo, represen, quantidadeVertice){
-	if(tipoGrafo == 0){ //Então é o grafo não orientado
+	if(tipoGrafo == 0){ //grafo não orientado
 		var nos = []
 		for(var i = 0; i < quantidadeVertice; i++){
 			let no = {

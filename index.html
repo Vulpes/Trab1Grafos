@@ -54,15 +54,15 @@
                         var fileReader = new FileReader();
 
                         fileReader.onload = function (e){
-                            readFile = fileReader.result.split('/n');
+                            readFile = fileReader.result.split('\n');
                             type = readFile.shift();
                             qntVert = parseInt(readFile.shift());
 
                             var data = {"arq": readFile, "type": type, "qnt": qntVert}
 
                             sessionStorage.setItem("data", JSON.stringify(data));
-
-                            location.href = "main.html"
+                            
+                            location.href = "main.html";
                         }
 
                         fileReader.readAsText(fileObj);

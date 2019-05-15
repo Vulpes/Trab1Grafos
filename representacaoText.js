@@ -1,6 +1,3 @@
-
-/* Desenvolvido por Bruno dos Santos  FaceBook: https://www.facebook.com/Brunnorio */
-
 function verLista(lista, quantVertice, nome){
   var html = '<p class="title">Representação de um ' + nome +' - Lista da Adjacência</p>'
 

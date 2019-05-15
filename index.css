@@ -55,3 +55,25 @@ a:hover {
     align-content: center;
 }
 
+.titulo {
+    margin: 20px;
+    font-size: 30px;
+}
+
+.btn2 {
+    width: 200px;
+    background-color: firebrick !important;
+    color: white !important;
+    text-align: center;
+    border-color: firebrick !important;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin: 5px;
+}
+
+.btn2:hover{
+    background-color: white !important;
+    color: black !important;
+    border-color: firebrick !important;
+    cursor: pointer;
+}
