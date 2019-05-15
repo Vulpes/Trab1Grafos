@@ -1,10 +1,12 @@
 const grafo = require('../CriaGrafo')
 const repp = require('./representacao')
 
-const lista = (qNos, arquivo,tipo)=>{
-    let l = grafo.grafo(qNos,arquivo,tipo)
+const lista = (qNos, arquivo ,tipo)=>{
+	let l = arquivo
+	
     var quantVertice = qNos
-		var arquivoLido = arquivo
+	var arquivoLido = arquivo
+	console.log(arquivoLido)
 		if(tipo == 0){
 			var lista = [quantVertice]; //Criando a lista
 		    //Criação de um array em cada posição
@@ -12,7 +14,7 @@ const lista = (qNos, arquivo,tipo)=>{
 		    	var i = 0;
 		    //Armazenamento dos dados
 		    while(arquivoLido.length){
-		    	var linha = arquivoLido.shift();
+		    	var linha = parseInt(arquivoLido.shift());
 		    	linha = linha.split(' ');
 		    	var verIni = parseInt(linha.shift());
 		    	var verFin = parseInt(linha.shift());
@@ -40,7 +42,8 @@ const lista = (qNos, arquivo,tipo)=>{
     		for(var i = 0; i < quantVertice; i++) lista[i] = [];
 
 			while(arquivoLido.length){
-				var linha = arquivoLido.shift();
+				console.log(arquivoLido)
+				var linha = parseInt(arquivoLido.shift());
 				linha = linha.split(' ');
 				var verIni = parseInt(linha.shift());
 				var verFin = parseInt(linha.shift());

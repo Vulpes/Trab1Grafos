@@ -1,6 +1,7 @@
 
 
 const maiorGrau = (grafo)=>{
+	
     let lista = grafo.representacao
 	let maior
 	let valorMaior = 0
@@ -13,6 +14,7 @@ const maiorGrau = (grafo)=>{
 			   valorMaior = j
 			}
 		}
+	console.log(maior)
 	return maior
 }
 module.exports = {
