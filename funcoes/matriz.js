@@ -2,7 +2,7 @@ const grafo = require('../CriaGrafo')
 const repp = require('./representacao')
 
 const matriz = (qNos, arquivo,tipo)=>{
-    let m = grafo.grafo(qNos,arquivo,tipo)
+    let m = arquivo
     if(tipo == 0) {			
 
         var matriz = [qNos]; // Criação de uma matriz unidimensional
