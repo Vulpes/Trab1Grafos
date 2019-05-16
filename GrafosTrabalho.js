@@ -199,16 +199,16 @@ class Grafo{
 		}
     }
     getBuscaLargura(noEscolhido) {
-		let quantVertice = this.getQNos()
+		var quantVertice = this.getQNos()
 		if(this.trep == 0){
 			
-			let matriz = this.representacao
-			let fila = []
-		    let matrizBusca = []
-		    let aux = noEscolhido
+			var matriz = this.rep
+			var fila = []
+		    var matrizBusca = []
+		    var aux = noEscolhido
 
-		    for(let j = 0; j < quantVertice; j++){
-		      let obj = {
+		    for(var j = 0; j < quantVertice; j++){
+		      var obj = {
 		          cor: "branco",
 		          distancia: "inf",
 		          pai: "indef"
@@ -220,9 +220,9 @@ class Grafo{
 		    matrizBusca[noEscolhido].cor = "cinza"
 		    matrizBusca[noEscolhido].distancia = 0
 
-		    let cont = 1
+		    var cont = 1
 		    fila.push(noEscolhido)
-		    let verticeSecundario
+		    var verticeSecundario
 
 		    while(cont > 0){
 		      noEscolhido = fila.shift()
@@ -246,7 +246,8 @@ class Grafo{
 		    return matrizBusca
 		}
 		else {
-			var lista = this.representacao
+			var lista = this.rep
+			console.log(lista)
 			var fila = []
 		    var listaBusca = []
 		    var aux = noEscolhido
@@ -258,7 +259,8 @@ class Grafo{
 		        }
 
 		        listaBusca[i] = [];
-		        listaBusca[i].push(obj);
+				listaBusca[i].push(obj);
+				console.log(listaBusca[i])
 		        listaBusca[i].push(lista[i]);
 		    }
 
@@ -286,7 +288,7 @@ class Grafo{
 		    for(var i = 0; i < quantVertice; i++) retorno.push(listaBusca[i][0])
 		    return retorno
 		}
-    }
+	}
     //Caminho entre dois Vértices
     getCaminhoEN(rep, vert1, vert2, tipoBusca) {
 		var quantVertice = this.getQNos()
@@ -333,7 +335,7 @@ class Grafo{
     //fim da classe grafo, a qual será a classe pai das demais
 }
 
-class Matriz extends grafo{
+class Matriz extends Grafo{
     constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
@@ -384,7 +386,7 @@ class Matriz extends grafo{
  
 }
 
-class Lista extends grafo {
+class Lista extends Grafo {
 	constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
