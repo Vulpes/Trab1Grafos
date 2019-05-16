@@ -12,8 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="CriaGrafo.js"></script>
+    <script type="text/javascript" src="GrafosTrabalho.js"></script>
     <script type="text/javascript" src="./funcoes/index.js"></script>
+    <script type="text/javascript" src="representacaoGrafo.js"></script>
+    <script type="text/javascript" src="representacaoText.js"></script>
+
+    <script src="./vis.min.js"></script>
+    <script src="./vis.min.css"></script>
+    <script src="./jquery-3.2.1.slim.min.js"></script>
+    <script src="sweetAlert.js"></script>
 
     <title>Trabalho de Grafos</title>
 </head>
@@ -130,7 +137,7 @@
         </div>
         
         <footer>
-            <p>Criado por: {Nome 1 e Nome 2}</p>
+            <p>Criado por: {Fernanda Carolina Claudio Silva e Nome 2}</p>
             <p>Contatos: <a href="mailto:fccs1998@gmail.com">Pessoa 1</a></p>
         </footer>
 
@@ -156,7 +163,7 @@
 
             let txt = $('.choice').text();
             
-            var graph = grafo(data['qnt'], data['arq'], data['type']);
+            //var graph = Grafo(data['qnt'], data['arq'], data['type']);
             
             if(txt == 'Matriz de Adjacência'){
 
@@ -165,7 +172,7 @@
                 html = verMatriz(matriz.getRepresentacao(), matriz.getQNos(), $('#m1').text())
                 $('.textGraph').append(html);
 
-                //Vizualizar grafo
+                //Visualizar grafo
                 data = JSON.parse(sessionStorage.getItem('data'));
                 var list = new Lista(data['qnt'], data['arq'], data['type']);
                 var aux = verGrafo(lista.getTipo(), lista.getRepresentacao(), lista.getQNos());
@@ -179,12 +186,12 @@
                 var connection = new vis.NetWork(content, d, aux.options);
             }else{
 
-                //Vizualizar texto
+                //Visualizar texto
                 var lista = new Lista(data['qnt'], data['arq'], data['type']);
                 var html = verLista(lista.getRepresentacao(), lista.getQNos(), $('#m1').text());
                 $('.textGraph').append(html);
 
-                //Vizualizar grafo
+                //Visualizar grafo
                 var aux = verGrafo(lista.getTipo(), lista.getRepresentacao(), lista.getQNos());
                 var content = document.getElementById('implementationGraph');
                 var d = {
@@ -209,7 +216,7 @@
                 }
             });
 
-            if(escolhaVertice >= dados['qnt']){
+            if(escolhaVertice >= data['qnt']){
                 swal({type: 'error', text: 'Valor indefinido'});
             }else if(escolhaVertice){
                 $('.botoes').hide();
@@ -248,7 +255,7 @@
                     return !value && 'O valor indicado é inválido!!'
                 }
             });
-            if(escolhaVertice >= dados['qnt']){
+            if(escolhaVertice >= data['qnt']){
                 swal({type: 'error', text: 'Valor indefinido'});
             }else if(escolhaVertice){
                 $('.botoes').hide();
@@ -327,7 +334,7 @@
                 }
             });
 
-            if(vert1 >= dados['qnt']){
+            if(vert1 >= data['qnt']){
                 swal({type: 'error', text: 'Valor indefinido'});
             }else if(vert1){
                 const {value: vert2} = await swal({
@@ -505,7 +512,7 @@
       $('.cmD').on('click', async function(){
  
         let txt = $('.choice').text();
-        if(text == 'Matriz de Adjacência'){
+        if(txt == 'Matriz de Adjacência'){
             swal({type: 'error', text: 'Este algoritmo não funciona para Matriz de Adjacência'});
         }else{
 

@@ -333,7 +333,7 @@ class Grafo{
     //fim da classe grafo, a qual será a classe pai das demais
 }
 
-class Matriz extends grafo{
+class Matriz extends Grafo{
     constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
@@ -384,7 +384,7 @@ class Matriz extends grafo{
  
 }
 
-class Lista extends grafo {
+class Lista extends Grafo {
 	constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
