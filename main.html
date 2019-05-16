@@ -97,7 +97,7 @@
                 <div class="body">
                     <div class="row justify-content-around">
                         <div class="col-md-4 animated fadeInLeft btn2 conexo">É Conexo?</div>
-                        <div class="col-md-4 animated fadeInLeft btn2 cl">Colorir Grafo</div>
+                        <div class="col-md-4 animated fadeInLeft cl"></div>
                     </div>
                 </div>
             </div>
@@ -118,25 +118,25 @@
                 <div class="body">
                     <div class="row justify-content-around">
                         <div class="col-md-4 animated fadeInLeft btn2 cmD">Caminho Mínimo (Dijkstra)</div>
-                        <div class="col-md-4 animated fadeInLeft btn2 cmF">Caminho Mínimo (Floyd Warshall)</div>
+                        <div class="col-md-4 animated fadeInLeft cmF"></div>
                     </div>
                 </div>
                 <div class="body">
                     <div class="row justify-content-around">
-                        <div class="col-md-4 animated fadeInLeft btn2 rfc">Redução de Componentes F-conexos</div>
-                        <div class="col-md-4 animated fadeInLeft btn2 t">Transposição</div>
+                        <div class="col-md-4 animated fadeInLeft rfc"></div>
+                        <div class="col-md-4 animated fadeInLeft t"></div>
                     </div>
                 </div>
                 <div class="body">
                     <div class="row justify-content-around">
-                        <div class="col-md-4 animated fadeInLeft btn2 oT">Ordenação Topológica</div>
+                        <div class="col-md-4 animated fadeInLeft oT"></div>
                         <div class="col-md-4 animated fadeInLeft"> </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <footer>
+        <footer class="footer">
             <p>Criado por: {Fernanda Carolina Claudio Silva e Nome 2}</p>
             <p>Contatos: <a href="mailto:fccs1998@gmail.com">Pessoa 1</a></p>
         </footer>
@@ -160,6 +160,7 @@
             $('.botoes').hide();
             $('.m4').hide('slow');
             $('.m5').show('slow');
+            $('.footer').hide();
 
             let txt = $('.choice').text();
             
@@ -183,7 +184,7 @@
                     edges: new vis.DataSet(aux.edges)
                 }
 
-                var connection = new vis.NetWork(content, d, aux.options);
+                var conexao = new vis.Network(content, d, aux.options)  
             }else{
 
                 //Visualizar texto
@@ -199,7 +200,7 @@
                     edges: new vis.DataSet(aux.edges)
                 }
 
-                var connection = new vis.NetWork(content, d, aux.options);
+                var conexao = new vis.Network(content, d, aux.options)  
             }
     
         });
@@ -228,7 +229,7 @@
                 if(txt == "Matriz de Adjacência"){
 
                     var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
-                    let bp = busca_profundidadeM(matriz.getRepresentacao(), escolhaVertice, matriz.getQNos());
+                    let bp = getBuscaProfundidade(matriz);
                     var html = verBuscaProfundidadeMatriz(bp, data['qnt'], escolhaVertice);
                     $('body').append(html);
 
@@ -290,7 +291,7 @@
                         edges: new vis.DataSet(aux.edges)
                     }
 
-                    var connectio = new vis.NetWork(content, d, aux.options);
+                    var conexao = new vis.NetWork(content, d, aux.options);
 
                 }else{
 
@@ -316,7 +317,7 @@
                         edges: new vis.DataSet(aux.edges)
                     }
 
-                    var connection = new vis.NetWork(content, d, aux.options);
+                    var conexao = new vis.Network(content, d, aux.options);
 
                 }
             }
@@ -389,7 +390,7 @@
                             html += '<div class="representacao ">';
                             html += '<div class="row " style="margin-bottom: 10px;">';
                             html += '<div class="com">De '+ vert1 + ' Para ' + vert2 +  '</div>';
-                            html = verConexao(caminho, data['qnt'], html, vert1, vert2);
+                            html = verConexao(path, data['qnt'], html, vert1, vert2);
                             html += '</div>';
                             html += '</div>';
                             $('.textGraph').append(html);
@@ -413,7 +414,7 @@
                                 path.push(list.getCaminhoEN(bl, vert1, vert2, tipo));
                                 var text = "Busca em Largura";
                             }else{
-                                var bf = list.getBuscaProfundidade(bf, vert1, vert2, tipo); 
+                                var bf = list.getBuscaProfundidade(vert1); 
                                 path.push(list.getCaminhoEN(bf, vert1, vert2, tipo));
                                 var text = "Busca em Profundidade";
                             }
@@ -422,7 +423,7 @@
                             html += '<div class="representacao ">';
                             html += '<div class="row " style="margin-bottom: 10px;">';
                             html += '<div class="com">De '+ vert1 + ' Para ' + vert2 +  '</div>';
-                            html = verConexao(caminho, data['qnt'], html, vert1, vert2);
+                            html = verConexao(path, data['qnt'], html, vert1, vert2);
                             html += '</div>';
                             html += '</div>';
                             $('.textGraph').append(html);
@@ -477,7 +478,7 @@
                     edges: new vis.DataSet(aux.edges)
                 }
 
-                var connection = vis.NetWork(content, d, aux.options);
+                var conexao = vis.NetWork(content, d, aux.options);
             }
         });
 
@@ -485,7 +486,7 @@
         $('.agmP').on('click', function(){
         
             let txt = $('.choice').text();
-            if(text == 'Matriz de Adjacência'){
+            if(txt == 'Matriz de Adjacência'){
                 swal({type: 'error', text: 'Este algoritmo não funciona para Matriz de Adjacência'});
             }else{
                 $('.botoes').hide();
@@ -504,7 +505,7 @@
                     nodes: new vis.DataSet(aux.nodes),
                     edges: new vis.DataSet(aux.edges)
                 }
-                var connection = new vis.Network(content, d, aux.options)  
+                var conexao = new vis.Network(content, d, aux.options)  
             }
       });
 

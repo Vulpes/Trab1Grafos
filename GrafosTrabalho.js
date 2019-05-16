@@ -312,7 +312,7 @@ class Grafo{
 		}
 		else{
 			for(let i = 0; i < quantVertice; i++){
-				let ant = rep[vert2].antecessor
+				let ant = rep[vert2].pai
 				if(ant == vert1) return caminho
 		          else if(ant == "indef") break
 		          else if (ant == null) return "false"
