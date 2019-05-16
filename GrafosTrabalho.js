@@ -1,4 +1,4 @@
-class grafo{
+class Grafo{
     //construtor da classe grafo
     constructor(qNos, arquivo, tipo){
         this.quantidade = qNos
@@ -57,7 +57,7 @@ class grafo{
 		}
     }
     //-----buscas, sendo a busca em profundidade e a busca em largura------
-    BuscaProfundidade(verticeEscolhido) {
+    getBuscaProfundidade(verticeEscolhido) {
 		if(this.trep == 1) {
 			let lista = this.getRepresentacao()
 			let quantVertice = this.getQNos()
@@ -288,7 +288,7 @@ class grafo{
 		}
     }
     //Caminho entre dois Vértices
-    CaminhoEntreDoisVertices(rep, vert1, vert2, tipoBusca) {
+    getCaminhoEN(rep, vert1, vert2, tipoBusca) {
 		var quantVertice = this.getQNos()
 		var caminho = []
 		if(tipoBusca == 1){
@@ -333,7 +333,7 @@ class grafo{
     //fim da classe grafo, a qual será a classe pai das demais
 }
 
-class matriz extends grafo{
+class Matriz extends grafo{
     constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
@@ -381,10 +381,10 @@ class matriz extends grafo{
 		    this.setRepresentacao(matriz, 0)
 		}
 	}
- //arquivoLido = arquivo
+ 
 }
 
-class lista extends grafo {
+class Lista extends grafo {
 	constructor(qNos, arquivo, tipo){
 		super(qNos, arquivo, tipo)
 		var quantVertice = qNos
