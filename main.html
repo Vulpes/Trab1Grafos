@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="GrafosTrabalho.js"></script>
+    <script type="text/javascript" src="./funcoes/index.js"></script>
+    <script type="text/javascript" src="representacaoGrafo.js"></script>
+    <script type="text/javascript" src="representacaoText.js"></script>
+
+    <script src="./vis.min.js"></script>
+    <script src="./vis.min.css"></script>
+    <script src="./jquery-3.2.1.slim.min.js"></script>
+    <script src="sweetAlert.js"></script>
+
+    <title>Trabalho de Grafos</title>
+</head>
+<body>
+    <div class="container-flex">
+        <div class="col-lg-12 banner">
+            <br/>
+            <h1>Trabalho de Grafos</h1>
+            <br/>
+        </div>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="#" class="navbat-brand">Menu</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href="./index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link m3" id="m3">Main <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle choice" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Lista de Adjacência
+                            </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a href="#" class="dropdown-item m4" id="opt1" data-value="Matriz de Adjacência">Matriz de Adjacência</a>
+                            <a href="#" class="dropdown-item m5" id="opt2" data-value="Lista de Adjacência">Lista de Adjacência</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="row">
+            <p class="titulo m1" id="m1">Dígrafo</p>
+            <p class="titulo m2" id="m2"></p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 textGraph"></div>
+            <div class="col-md-6 implementationGraph" id="implementationGraph"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 textGraph2"></div>
+            <di class="col-md-12 implementationGraph2" id="implementationGraph2"></di>
+        </div>
+
+        <div class="botoes">
+            <div class="grafo" style="display: none;">
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 see">Vizualização</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cv">Caminho entre os vértices</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 bp">Busca Em Profundidade</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 bl">Busca Em Largura</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 cmD">Caminho Mínimo (Dijkstra)</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 agmP">Árvore Geradora Mínima - Prim</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 conexo">É Conexo?</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cl">Colorir Grafo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="digrafo">
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 see">Visualização</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cv">Caminho entre os vértices</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 bp">Busca em Profundidade</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 bl">Busca em Largura</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 cmD">Caminho Mínimo (Dijkstra)</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cmF">Caminho Mínimo (Floyd Warshall)</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 rfc">Redução de Componentes F-conexos</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 t">Transposição</div>
+                    </div>
+                </div>
+                <div class="body">
+                    <div class="row justify-content-around">
+                        <div class="col-md-4 animated fadeInLeft btn2 oT">Ordenação Topológica</div>
+                        <div class="col-md-4 animated fadeInLeft"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Criado por: {Fernanda Carolina Claudio Silva e Nome 2}</p>
+            <p>Contatos: <a href="mailto:fccs1998@gmail.com">Pessoa 1</a></p>
+        </footer>
+
+    </div>
+
+    <script>
+        var data = JSON.parse(sessionStorage.getItem("data"));
+        if(data['type'] == 0){
+            $('#m1').html('Grafo');
+            $('.grafo').show();
+            $('.digrafo').hide();
+        }else{
+            $('#m1').html('Dígrafo');
+            $('.digrafo').show();
+        }
+        $('#m2').html(data['qnt'] + ' vértices');
+
+        //Ver diferentes representações
+        $('.see').on('click', function(){
+            $('.botoes').hide();
+            $('.m4').hide('slow');
+            $('.m5').show('slow');
+
+            let txt = $('.choice').text();
+            
+            //var graph = Grafo(data['qnt'], data['arq'], data['type']);
+            
+            if(txt == 'Matriz de Adjacência'){
+
+                //Visualizar texto
+                var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
+                html = verMatriz(matriz.getRepresentacao(), matriz.getQNos(), $('#m1').text())
+                $('.textGraph').append(html);
+
+                //Visualizar grafo
+                data = JSON.parse(sessionStorage.getItem('data'));
+                var list = new Lista(data['qnt'], data['arq'], data['type']);
+                var aux = verGrafo(lista.getTipo(), lista.getRepresentacao(), lista.getQNos());
+                var content = document.getElementById('implementationGraph');
+
+                var d = {
+                    nodes: new vis.DataSet(aux.nodes),
+                    edges: new vis.DataSet(aux.edges)
+                }
+
+                var connection = new vis.NetWork(content, d, aux.options);
+            }else{
+
+                //Visualizar texto
+                var lista = new Lista(data['qnt'], data['arq'], data['type']);
+                var html = verLista(lista.getRepresentacao(), lista.getQNos(), $('#m1').text());
+                $('.textGraph').append(html);
+
+                //Visualizar grafo
+                var aux = verGrafo(lista.getTipo(), lista.getRepresentacao(), lista.getQNos());
+                var content = document.getElementById('implementationGraph');
+                var d = {
+                    nodes: new vis.DataSet(aux.nodes),
+                    edges: new vis.DataSet(aux.edges)
+                }
+
+                var connection = new vis.NetWork(content, d, aux.options);
+            }
+    
+        });
+
+        //Busca em Profundidade
+        $('.bp').on('click', async function(){
+            const {value: escolhaVertice} = await swal({
+                title: 'Indique um vértice inicial: ',
+                input: 'number',
+                inputPlaceholder: 'Vértice',
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    return !value && 'O valor indicado é inválido!!'
+                }
+            });
+
+            if(escolhaVertice >= data['qnt']){
+                swal({type: 'error', text: 'Valor indefinido'});
+            }else if(escolhaVertice){
+                $('.botoes').hide();
+                $('#opt1').hide('slow');
+                $('#opt2').show('slow');
+
+                let txt = $('.choice').text();
+
+                if(txt == "Matriz de Adjacência"){
+
+                    var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
+                    let bp = busca_profundidadeM(matriz.getRepresentacao(), escolhaVertice, matriz.getQNos());
+                    var html = verBuscaProfundidadeMatriz(bp, data['qnt'], escolhaVertice);
+                    $('body').append(html);
+
+                }else{
+
+                    var list = new Lista(data['qnt'], data['arq'], data['type']);
+                    let bp = list.getBuscaProfundidade(escolhaVertice);
+                    var html = verBuscaProfundidadeLista(bp, data['qnt'], escolhaVertice);
+                    $('body').append(html);
+
+                }
+            }
+
+        });
+
+        //Busca em Largura
+        $('.bl').on('click', async function(){
+            const {value: escolhaVertice} = await swal({
+                title: 'Indique um vértice inicial: ',
+                input: 'number',
+                inputPlaceholder: 'Vértice',
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    return !value && 'O valor indicado é inválido!!'
+                }
+            });
+            if(escolhaVertice >= data['qnt']){
+                swal({type: 'error', text: 'Valor indefinido'});
+            }else if(escolhaVertice){
+                $('.botoes').hide();
+                $('#opt1').hide('slow');
+                $('#opt2').show('slow');
+
+                let txt = $('.choice').text();
+
+                if(txt == 'Matriz de Adjacência'){
+
+                    var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
+                    const bl = matriz.getBuscaLargura(escolhaVertice);
+
+                    let path = [];
+
+                    for(var i = 0; i < data['qnt']; i++){
+                        path.push(matriz.getCaminhoEN(bl, escolhaVertice, i, 1));
+
+                    }
+                    
+                    var html = verBuscaLargura(path, data['qnt'], escolhaVertice);
+                    $('.textGraph').append(html);
+
+                    //Visualizar grafo
+                    data = JSON.parse(sessionStorage.getItem("data"));
+                    var list = new Lista(data['qnt'], data['arq'], data['type']);
+                    var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+                    var content = document.getElementById('implementationGraph');
+
+                    var d = {
+                        nodes: new vis.DataSet(aux.nodes),
+                        edges: new vis.DataSet(aux.edges)
+                    }
+
+                    var connectio = new vis.NetWork(content, d, aux.options);
+
+                }else{
+
+                    var list = new Lista(data['qnt'], data['arq'], data['type']);
+                    const bl = list.getBuscaLargura(escolhaVertice);
+                    let path = [];
+
+                    for(var i = 0; i < data['qnt']; i++){
+                        path.push(list.getCaminhoEN(bl, escolhaVertice, i, 1));
+                    }
+
+                    var html = verBuscaLargura(path, data['qnt'], escolhaVertice);
+                    $('.textGraph').append(html);
+
+                    //Visualizar grafo
+                    data = JSON.parse(sessionStorage.getItem('data'));
+                    var list = new Lista(data['qnt'], data['arq'], data['type']);
+                    var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+                    var content = document.getElementById('implementationGraph');
+
+                    var d = {
+                        nodes: new vis.DataSet(aux.nodes),
+                        edges: new vis.DataSet(aux.edges)
+                    }
+
+                    var connection = new vis.NetWork(content, d, aux.options);
+
+                }
+            }
+        });
+
+        //Caminho entre dois vértices
+        $('.cv').on('click', async function(){
+            const {value: vert1} = await swal({
+                title: 'Indique um vértice inicial: ',
+                input: 'number',
+                inputPlaceholder: 'Vértice',
+                showCancelButton: true,
+                inputValidator: (value) => {
+                    return !value && "O valor indicado é inválido"
+                }
+            });
+
+            if(vert1 >= data['qnt']){
+                swal({type: 'error', text: 'Valor indefinido'});
+            }else if(vert1){
+                const {value: vert2} = await swal({
+                    title: 'Indique um segundo vértice inicial: ',
+                    input: 'number',
+                    inputPlaceholder: 'Vértice',
+                    showCancelButton: true,
+                    inputValidator: (value) => {
+                        return !value && "O valor indicado é inválido"
+                    }
+                });
+
+                if(vert2 >= data['qnt']){
+                    swal({type: 'error', text: "Valor indefinido"});
+                }else if(vert2){
+                    const {value: select} = await swal({
+                        title: 'Selecione o tipo de busca',
+                        input: 'select',
+                        inputOptions: {
+                            'bl':'Busca em Largura',
+                            'bf':'Busca em Profundidade'
+                        },
+                        inputPlaceholder: 'Selecione uma das Buscas',
+                        showCancelButton: true
+                    });
+                    
+                    if(select){
+                        var tipo = select == 'bl' ? 1 : 0;
+
+                        $('.botoes').hide();
+                        $('#m4').hide('slow');
+                        $('#m5').show('slow');
+
+                        let txt = $('.choice').text();
+
+                        if(txt == "Matriz de Adjacência"){
+
+                            var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
+                            let path = [];
+
+                            if(tipo){
+                                var bl = matriz.getBuscaLargura(vert1);
+                                path.push(matriz.getCaminhoEN(bl, vert1, vert2, tipo));
+                                var text = "Busca em Largura";
+                            }else{
+                                var bp = matriz.getBuscaProfundidade(vert1);
+                                path.push(matriz.getCaminhoEN(bf, vert1, vert2, tipo));
+                                var text = "Busca em Profundidade";
+                            }
+
+                            var html = '<p class="titulo">Caminho entre o vértice ' + vert1 + ' e o vértice ' + vert2 +' - ' + text +'</p>';
+                            html += '<div class="representacao ">';
+                            html += '<div class="row " style="margin-bottom: 10px;">';
+                            html += '<div class="com">De '+ vert1 + ' Para ' + vert2 +  '</div>';
+                            html = verConexao(caminho, data['qnt'], html, vert1, vert2);
+                            html += '</div>';
+                            html += '</div>';
+                            $('.textGraph').append(html);
+                            data = JSON.parse(sessionStorage.getItem("data"));
+                            var list = new Lista(data['qnt'], data['arq'], data['type']);
+                            var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+                            var content = document.getElementById('implementationGraph');
+                            var d = {
+                                nodes: new vis.DataSet(aux.nodes),
+                                edges: new vis.DataSet(aux.edges)
+                            }
+                            var conexao = new vis.Network(content, d, aux.options);
+
+                        }else{
+                            var list = new Lista(data['qnt'], data['arq'], data['type']);
+
+                            let path = [];
+
+                            if(tipo){
+                                var bl = list.getBuscaLargura(vert1);
+                                path.push(list.getCaminhoEN(bl, vert1, vert2, tipo));
+                                var text = "Busca em Largura";
+                            }else{
+                                var bf = list.getBuscaProfundidade(bf, vert1, vert2, tipo); 
+                                path.push(list.getCaminhoEN(bf, vert1, vert2, tipo));
+                                var text = "Busca em Profundidade";
+                            }
+
+                            var html = '<p class="titulo">Caminho entre o vértice ' + vert1 + ' e o vértice ' + vert2 +' - ' + text +'</p>';
+                            html += '<div class="representacao ">';
+                            html += '<div class="row " style="margin-bottom: 10px;">';
+                            html += '<div class="com">De '+ vert1 + ' Para ' + vert2 +  '</div>';
+                            html = verConexao(caminho, data['qnt'], html, vert1, vert2);
+                            html += '</div>';
+                            html += '</div>';
+                            $('.textGraph').append(html);
+                            data = JSON.parse(sessionStorage.getItem("data"));
+                            list = new Lista(data['qnt'], data['arq'], data['type']);
+                            var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+                            var content = document.getElementById('implementationGraph');
+                            var d = {
+                                nodes: new vis.DataSet(aux.nodes),
+                                edges: new vis.DataSet(aux.edges)
+                            }
+                            var conexao = new vis.Network(content, d, aux.options);
+                        }
+                    }
+                }
+            }
+        });
+
+        //É Conexo?
+        $('.conexo').on('click', function(){
+            let txt = $('.choice').text();
+
+            if(txt == "Matriz de Adjacência"){
+                swal({type: 'error', text: 'Este algoritmo não foi implementado para Matriz de Adjacência'});
+            }else{
+                $('.botoes').hide()
+                $('#m4').hide('slow');
+                $('#m5').show('slow');
+
+                var list = new Lista(data['qnt'], data['arq'], data['type']);
+                let vertices = [];
+                let qnt = list.getQNos();
+
+                for(var i = 0; i < qnt; i++){
+                    vertices.push(i);
+                }
+                var conexo = list.getComponents(vertices, list.getRepresentacao());
+                if(conexo.length > 1){
+                    var html = '<p class="titulo">O grafo não é CONEXO';
+                }else{
+                    var html = '<p class="titulo">O grafo é CONEXO';
+                }
+                $('.textGraph2').append(html);
+    
+                data = JSON.parse(sessionStorage.getItem('data'));
+                var list = new Lista(data['qnt'], data['arq'], data['type']);
+                var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+                var content = document.getElementById('implementationGraph2');
+
+                var d = {
+                    nodes: vis.DataSet(aux.nodes),
+                    edges: new vis.DataSet(aux.edges)
+                }
+
+                var connection = vis.NetWork(content, d, aux.options);
+            }
+        });
+
+        //Árvore geradora minima Prim
+        $('.agmP').on('click', function(){
+        
+            let txt = $('.choice').text();
+            if(text == 'Matriz de Adjacência'){
+                swal({type: 'error', text: 'Este algoritmo não funciona para Matriz de Adjacência'});
+            }else{
+                $('.botoes').hide();
+                $('#m4').hide('slow');
+                $('#m5').show('slow');
+
+                var list = new Lista(data['qnt'], data['arq'], data['type'])    
+                var agm = list.getPrim()
+
+                data = JSON.parse(sessionStorage.getItem("data"))
+                list = new Lista(data['qnt'], data['arq'], data['type'])
+
+                var aux = verAGM(list.getRepresentacao(), agm, list.getQNos())
+                var content = document.getElementById('implementationGraph2')
+                var d = {
+                    nodes: new vis.DataSet(aux.nodes),
+                    edges: new vis.DataSet(aux.edges)
+                }
+                var connection = new vis.Network(content, d, aux.options)  
+            }
+      });
+
+      //Árvore geradora mínima Dijkstra
+      $('.cmD').on('click', async function(){
+ 
+        let txt = $('.choice').text();
+        if(txt == 'Matriz de Adjacência'){
+            swal({type: 'error', text: 'Este algoritmo não funciona para Matriz de Adjacência'});
+        }else{
+
+          const {value: escolhaVertice} = await swal({
+            title: 'Indique um vértice inicial:',
+            input: 'number',
+            inputPlaceholder: 'Vértice',
+            showCancelButton: true,
+            inputValidator: (value) => {
+              return !value && 'Valor inválido!'
+            }
+          });
+          if(escolhaVertice >= data['qnt']){
+              swal({type: 'error', text: 'Valor indefinido'})
+          }
+          else if(escolhaVertice){
+              $('.botoes').hide()
+              $('#m4').hide('slow')
+              $('#m5').show('slow')
+              var list = new Lista(data['qnt'], data['arq'], data['type'])    
+
+              let cm = list.getDijkstra(escolhaVertice)
+              let html = verCaminhoMin(cm, list.getQNos(), escolhaVertice)
+
+              $('.textGraph').html(html)
+
+              data = JSON.parse(sessionStorage.getItem("data"))
+              list = new Lista(data['qnt'], data['arq'], data['type'])
+              var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos())
+              var content = document.getElementById('implementationGraph')
+              var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+              }
+              var conexao = new vis.Network(content, d, aux.options)    
+             
+          }
+        }
+      
+    })
+    </script>
+
+    <script>
+        //Trocando tipo de representação
+        $("#opt1").on('click', function(){
+           $('#navbarDropdown').text("Matriz de Adjacência");
+        });
+        $("#opt2").on('click', function(){
+            $('#navbarDropdown').text("Lista de Adjacência");
+        })
+    </script>
+
+
+</body>
+</html>

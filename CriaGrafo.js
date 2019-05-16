@@ -9,6 +9,4 @@ const grafo = (qNos, arquivo, tipo)=>{
         return grafos
     }
     
-module.exports = {
-    grafo
-}
+export default grafo;
