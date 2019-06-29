@@ -25,7 +25,7 @@
     <title>Trabalho de Grafos</title>
 </head>
 <body>
-    <div class="container-flex">
+    <div class="container-fluid">
         <div class="col-lg-12 banner">
             <br/>
             <h1>Trabalho de Grafos</h1>
@@ -58,21 +58,19 @@
                 </ul>
             </div>
         </nav>
-        
         <div class="row">
             <p class="titulo m1" id="m1">Dígrafo</p>
             <p class="titulo m2" id="m2"></p>
         </div>
-
-        <div class="row">
-            <div class="col-md-6 textGraph"></div>
-            <div class="col-md-6 implementationGraph" id="implementationGraph"></div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 textGraph2"></div>
-            <di class="col-md-12 implementationGraph2" id="implementationGraph2"></di>
-        </div>
+            <div class="row">
+                <div class="col-md-6 textGraph" id="textGraph"></div>
+                <div class="col-md-6 implementationGraph" id="implementationGraph"></div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12 textGraph2" id="textGraph2"></div>
+                <div class="col-md-12 implementationGraph2" id="implementationGraph2"></div>
+            </div>
 
         <div class="botoes">
             <div class="grafo" style="display: none;">
@@ -97,7 +95,7 @@
                 <div class="body">
                     <div class="row justify-content-around">
                         <div class="col-md-4 animated fadeInLeft btn2 conexo">É Conexo?</div>
-                        <div class="col-md-4 animated fadeInLeft cl"></div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cl">Coloração</div>
                     </div>
                 </div>
             </div>
@@ -118,30 +116,31 @@
                 <div class="body">
                     <div class="row justify-content-around">
                         <div class="col-md-4 animated fadeInLeft btn2 cmD">Caminho Mínimo (Dijkstra)</div>
-                        <div class="col-md-4 animated fadeInLeft cmF"></div>
+                        <div class="col-md-4 animated fadeInLeft btn2 cmF">Caminho Mínimo (Floyd Warshall)</div>
                     </div>
                 </div>
                 <div class="body">
                     <div class="row justify-content-around">
-                        <div class="col-md-4 animated fadeInLeft rfc"></div>
-                        <div class="col-md-4 animated fadeInLeft t"></div>
+                        <div class="col-md-4 animated fadeInLeft btn2 rfc">Redução de Componentes (f-conexos)</div>
+                        <div class="col-md-4 animated fadeInLeft btn2 t">Transposição</div>
                     </div>
                 </div>
                 <div class="body">
                     <div class="row justify-content-around">
-                        <div class="col-md-4 animated fadeInLeft oT"></div>
+                        <div class="col-md-4 animated fadeInLeft btn2 oT">Ordenação Topológica</div>
                         <div class="col-md-4 animated fadeInLeft"> </div>
                     </div>
                 </div>
             </div>
         </div>
         
-        <footer class="footer">
+        <footer class="footer" id="footer">
             <p>Criado por: {Fernanda Carolina Claudio Silva e Guilherme Lucas de Oliveira}</p>
             <p>Contatos: <a href="mailto:fccs1998@gmail.com">Fernanda</a> <br/> <a href="mailto:guilherme.oliveira@unesp.br">Guilherme</a></p>
         </footer>
-
+        
     </div>
+</body>
 
     <script>
         var data = JSON.parse(sessionStorage.getItem("data"));
@@ -223,6 +222,7 @@
                 $('.botoes').hide();
                 $('#opt1').hide('slow');
                 $('#opt2').show('slow');
+                $('#footer').hide();
 
                 let txt = $('.choice').text();
 
@@ -262,6 +262,7 @@
                 $('.botoes').hide();
                 $('#opt1').hide('slow');
                 $('#opt2').show('slow');
+                $('#footer').hide();
 
                 let txt = $('.choice').text();
 
@@ -368,6 +369,7 @@
                         $('.botoes').hide();
                         $('#m4').hide('slow');
                         $('#m5').show('slow');
+                        $('#footer').hide();
 
                         let txt = $('.choice').text();
 
@@ -452,6 +454,7 @@
                 $('.botoes').hide()
                 $('#m4').hide('slow');
                 $('#m5').show('slow');
+                $('#footer').hide();
 
                 var list = new Lista(data['qnt'], data['arq'], data['type']);
                 let vertices = [];
@@ -492,6 +495,7 @@
                 $('.botoes').hide();
                 $('#m4').hide('slow');
                 $('#m5').show('slow');
+                $('#footer').hide();
 
                 var list = new Lista(data['qnt'], data['arq'], data['type'])    
                 var agm = list.getPrim()
@@ -530,9 +534,10 @@
               swal({type: 'error', text: 'Valor indefinido'})
           }
           else if(escolhaVertice){
-              $('.botoes').hide()
-              $('#m4').hide('slow')
-              $('#m5').show('slow')
+              $('.botoes').hide();
+              $('#m4').hide('slow');
+              $('#m5').show('slow');
+            $('#footer').hide();
               var list = new Lista(data['qnt'], data['arq'], data['type'])    
 
               let cm = list.getDijkstra(escolhaVertice)
@@ -553,6 +558,189 @@
           }
         }
       
+    });
+
+    //Colorir grafo
+    $('.cl').on('click', async function(){
+        let txt = $('.choice').text();
+
+        if(txt == 'Matriz de Adjacência'){
+            swal({type: 'error', text: 'Este algoritmo não foi implementado para Matriz de Adjacência'})
+        }else{
+
+            $('.botoes').hide();
+            $('#m4').hide('slow');
+            $('#m5').show('slow');
+            $('#footer').hide();
+
+            var list = new Lista(data['qnt'], data['arq'], data['type']);
+            let newlist = list.getColoracao();
+
+            var aux = verGrafoColorido(list.getRepresentacao(), newlist, list.getQNos());
+            var content = document.getElementById('implementationGraph2');
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+        }
+    });
+
+    //Redução de compoenentes fortemente conexas
+    $('.cmF').on('click', async function(){
+
+        let txt = $('.choice').text();
+
+        if(txt == 'Matriz de Adjacência'){
+
+            $('.botoes').hide();
+            $('#m4').hide('slow');
+            $('#m5').show('slow');
+            $('#footer').hide();
+
+            var matriz = new Matriz(data['qnt'], data['arq'], data['type']);
+            let minPath = matriz.getCaminhoMFloyd();
+
+            html = verMatriz(minPath, matriz.getQNos(), $('#m1').text());
+            $('.textGraph').append(html);
+
+            data = JSON.parse(sessionStorage.getItem("data"));
+            var list = new Lista(data['qnt'], data['arq'], data['type']);
+
+            var aux = verGrafo(list.getTipo(), list.getRepresentacao(), list.getQNos());
+            var content = document.getElementById('implementationGraph');
+
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+        }else{
+            swal({type: 'error', text: 'Este algoritmo não foi implementado para Lista de Adjacência'});
+        }
+
+    })
+
+    $('.rfc').on('click', async function(){
+
+        let txt = $('.choice').text();
+
+        if(txt == "Matriz de Adjacência"){
+            swal({type: 'error', text: 'Este algoritmo não foi implementado para Matriz de Adjacência'});
+        }else{
+
+            $('.botoes').hide();
+            $('#m4').hide('slow');
+            $('#m5').show('slow');
+            $('#footer').hide();
+
+            var list = new Lista(data['qnt'], data['arq'], data['type']);
+            let redux = list.getReducaoFC();
+
+            let nodeColor = [];
+            let colors = ['#1bbd13', '#eda60c', '#de2204', '#9f31e8', '#645ced', '#0eb2c4', '#ed3796', '#30c78d', '#12c0ff', '#f05683'];
+
+            let count = 0;
+            for(let i = 0; i < redux.length; i++){
+                for(let j = 0; j < redux[i].length; j++){
+                    nodeColor[redux[i][j]] = colors[count]
+                }
+
+                count ++;
+            }
+
+            data = JSON.parse(sessionStorage.getItem("data"));
+            list = new Lista(data['qnt'], data['arq'], data['type']);
+
+            var aux = verGrafoRFC(list.getRepresentacao(), nodeColor, list.getQNos());
+            var content = document.getElementById('implementationGraph2');
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+        }
+ 
+    });
+    
+    //Transposição
+    $('.t').on('click', async function(){
+
+        let txt = $('.choice').text();
+
+        if(txt == "Matriz de Adjacência"){
+            swal({type: 'error', text: 'Este algoritmo não foi implementado para Matriz de Adjecência'});
+        }else{
+
+            $('.botoes').hide();
+            $('#m4').hide('slow');
+            $('#m5').show('slow');
+            $('#footer').hide();
+
+            let list = new Lista(data['qnt'], data['arq'], data['type']);
+            let trans = list.getTransposto();
+
+            var aux = verGrafo(1, trans, list.getQNos());
+            var content = document.getElementById('implementationGraph');
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+            let html = '<p class="title">Dígrafo Transposto</p>';
+            $('.implementationGraph').append(html);
+
+            var aux = verGrafo(1, list.getRepresentacao(), list.getQNos());
+            var content = document.getElementById('textGraph');
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+            html = '<p class="title">Dígrafo Original</p>';
+            $('.textGraph').append(html);
+
+        }
+
+    });
+
+    //Ordenação Topológica
+    $('.oT').on('click', async function(){
+
+        txt = $('.choice').text();
+
+        if(txt == "Matriz de Adjacência"){
+            swal({type: 'error', text: 'Este algoritmo não foi implementado para Matriz de Adjacência'});
+        }else{
+
+            $('.botoes').hide();
+            $('#m4').hide('slow');
+            $('#m5').show('slow');
+            $('#footer').hide();
+            
+            var list = new Lista(data['qnt'], data['arq'], data['type']);
+
+            var aux = verOrdenacaoTopologica(list.getOrdenacaoTopologica(0), list.getRepresentacao(), list.getQNos());
+            var content = document.getElementById('implementationGraph2');
+            var d = {
+                nodes: new vis.DataSet(aux.nodes),
+                edges: new vis.DataSet(aux.edges)
+            }
+
+            var conexao = new vis.Network(content, d, aux.options);
+
+        }
+
     })
     </script>
 
@@ -567,5 +755,4 @@
     </script>
 
 
-</body>
 </html>
