@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<!--
+	Urban by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Melhor rota para chegar ao destino</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="index.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	</head>
+	<body>
+
+			<div class="container-fluid">
+				<div class="col-lg-12 banner">
+					<br/>
+					<h1>Trabalho de Grafos</h1>
+					<br/>
+				</div>
+				
+				<!-- Nav -->
+				<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+					<a href="./RotaMelhor.html" class="navbat-brand">Rota Melhor</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							
+							<li class="nav-item active">
+								<a href="./index.html" class="nav-link">Home</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link m3" id="m3">Main <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle choice" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Lista de Adjacência
+								</a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a href="#" class="dropdown-item m4" id="opt1" data-value="Matriz de Adjacência">Matriz de Adjacência</a>
+									<a href="#" class="dropdown-item m5" id="opt2" data-value="Lista de Adjacência">Lista de Adjacência</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				
+				<!-- Banner -->
+				<section id="banner">
+					<div class="inner">
+						<header>
+							<h2>Isto é o Rota melhor</h2>
+							<p>Programa de Facilitação para encontrar a melhor rota em um mapa<br />Seja em uma caminho entre dois locais, ou a melhor rota passando por todos os locais</p>
+						</header>
+						<a href="#main" class="button big scrolly">Ler Mais</a>
+						<a href="./selecionaMapa.html"><div class="col-md-4 animated fadeInLeft btn2">MAPA</div></a>
+					</div>
+				</section>
+				
+				<!-- Main -->
+				<div id="main">
+					
+					<!-- Section -->
+					<section class="wrapper style1">
+						<div class="inner">
+							<!-- 2 Columns -->
+							<div class="flex flex-2">
+								<div class="col col1">
+									<div class="image round fit">
+										<a href="generic.html" class="link"><img src="images/pic01.jpg" alt="" /></a>
+									</div>
+								</div>
+								<div class="col col2">
+									<h3>Algorítmo de Dijkstra</h3>
+									<p>Algorítmo ideal para encontrar a menor distancia entre dois locais definidos, ideal para mapear a menor distancia entre o local atual, e o local que se deseja ir</p>
+									<p>Um pouco da história do algotítmo: O algoritmo de Dijkstra, concebido pelo cientista da computação holandês Edsger Dijkstra em 1956 e publicado em 1959,[1][2] soluciona o problema do caminho mais curto num grafo dirigido ou não dirigido com arestas de peso não negativo, em tempo computacional O(m + n log n) onde m é o número de arestas e n é o número de vértices. O algoritmo que serve para resolver o mesmo problema em um grafo com pesos negativos é o algoritmo de Bellman-Ford, que possui maior tempo de execução que o Dijkstra. </p>
+									<a href="#" class="button">Ir ao topo</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					
+					<!-- Section -->
+					<section class="wrapper style2">
+						<div class="inner">
+							<div class="flex flex-2">
+								<div class="col col2">
+									<h3>Algorítmo de Prim</h3>
+									<p>Foi escolhido este algorítmo, pois é uma forma eficiente de buscar o caminho mínimo(arvore geradora mínima)</p>
+									<p>Na ciência da computação o algoritmo de Prim é um algoritmo guloso (greedy algorithm) empregado para encontrar uma árvore geradora mínima (minimal spanning tree) num grafo conectado, valorado e não direcionado. Isso significa que o algoritmo encontra um subgrafo do grafo original no qual a soma total das arestas é minimizada e todos os vértices estão interligados. O algoritmo foi desenvolvido em 1930 pelo matemático Vojtěch Jarník e depois pelo cientista da computação Robert Clay Prim em 1957 e redescoberto por Edsger Dijkstra em 1959. </p>
+									<a href="#" class="button">Ir ao topo</a>
+								</div>
+								<div class="col col1 first">
+									<div class="image round fit">
+										<a href="generic.html" class="link"><img src="images/pic02.jpg" alt="" /></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
